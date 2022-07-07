@@ -1,6 +1,5 @@
 # TREASURE ISLAND
 
-# 1. We print the ASCII art with the treasure.
 print('''
 *******************************************************************************
           |                   |                  |                     |
@@ -24,17 +23,19 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 *******************************************************************************
 ''')
 
-# 2. We start the game at the crossroad. The user can go left or right.
-# We use the .lower() function to convert every possible input to a lowercase word that starts with l or r.
 print("\nWelcome to Treasure Island.\nYour mission is to find the treasure.")
+
 left_or_right = input("""\nYou are at a crossroad.
 Would you like to go left or right? Type 'left' or 'right'. """).lower()
+
 if left_or_right[0] == "l":
     swim_or_wait = input("""\nYou have reached a river passage by a cave.
 Would you like to swim or enter the cave? Type 'swim' or 'enter'. """).lower()
+    
     if swim_or_wait[0] == "e":
         door = input("""\nYou entered a cave and found 3 doors: one red, one yellow and one blue.
 Which door would you like to enter? Type 'red', 'yellow' or 'blue'. """).lower()
+        
         if door[0] == "r":
             print("\nYou got burned in a fire. Game Over.")
         elif door[0] == "b":
@@ -45,6 +46,7 @@ Which door would you like to enter? Type 'red', 'yellow' or 'blue'. """).lower()
             print("\nGame Over.")
     else:
         print("You were attacked by a trout. Game Over.")
+
 elif left_or_right[0] == "r":
     print("You fell into a hole. Game Over.")
 else:
