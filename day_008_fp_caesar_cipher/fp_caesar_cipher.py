@@ -58,9 +58,12 @@ while retry:
     my_direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
     my_text = input("Type your message:\n").lower()
     my_shift = int(input("Type the shift number:\n"))
+
     caesar(text=my_text, direction=my_direction, shift=my_shift)
+
     retry_prompt = input("Would you like to retry (y/n)? ").lower()
     if retry_prompt[0] == "n":
+        print("Thank you for using Caesar Cipher!")
         retry = False
     else:
         print()
