@@ -1,5 +1,4 @@
 # BAND NAME GENERATOR
-# Generates a band name based on the user's input
 
 print("Welcome to the Band Name Generator.")
 
