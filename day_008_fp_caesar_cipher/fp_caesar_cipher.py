@@ -62,6 +62,7 @@ while retry:
 
     retry_prompt = input("Would you like to retry (y/n)? ").lower()
     if retry_prompt[0] == "n":
+        print()
         print("Thank you for using Caesar Cipher!")
         retry = False
     else:
