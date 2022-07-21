@@ -51,9 +51,9 @@ while my_calculation:
     print(f"{num1} {operation_symbol} {num2} = {calculation}")  
        
     keep_counting = True
-    
     while keep_counting:
         continue_calculating = continue_calculations()
+        
         if continue_calculating[0] == "n":
             keep_counting = False # working
         elif continue_calculating[0] == "y":
@@ -61,8 +61,10 @@ while my_calculation:
                 print(symbol)
             operation_symbol = input("Pick an operator from the line above: ")
             new_num = float(input("What is the next number? "))
+            
+            previous_calculation = calculation
             new_calculation = operations[operation_symbol](calculation, new_num)
-            print(f"{calculation} {operation_symbol} {new_num} = {new_calculation}")
-            continue
+            print(f"{previous_calculation} {operation_symbol} {new_num} = {new_calculation}")
+            calculation = new_calculation
 
     my_calculation = False
