@@ -19,15 +19,12 @@ def divide(n1, n2):
     return n1 / n2
 
 
-def setup_operation():
-    num1 = float(input("What's the first number? "))
-    for symbol in operations:
-        print(symbol)
-    operation_symbol = input("Pick an operator from the line above: ")
-    num2 = float(input("What's the second number? "))
-    calculation = operations[operation_symbol](num1, num2)
-    print(f"{num1} {operation_symbol} {num2} = {calculation}")
-    return calculation
+def continue_calculations():
+    continue_calculating = " "
+    while continue_calculating[0] not in ("y", "n"):
+        continue_calculating = input("Do you want to add another operation? Type 'yes' or 'no': ").lower()
+
+    return continue_calculating
     
 operations = {
     "+": add,
@@ -39,22 +36,33 @@ operations = {
 
 print(logo)
 
-extra_operation = True
+my_calculation = True
 
-while extra_operation:
-    setup_operation()
+while my_calculation:
+    num1 = float(input("What's the first number? "))
     
-    continue_calculating = "answer"
-    while continue_calculating[0] not in ("y", "n"):
-        continue_calculating = input("Do you want to add another operation? Type 'yes' or 'no': ").lower()
+    for symbol in operations:
+        print(symbol)
+    operation_symbol = input("Pick an operator from the line above: ")
     
-    if continue_calculating[0] == "n":
-        extra_operation = False # working
-    elif continue_calculating[0] == "y":
-        for symbol in operations: # not working
-            print(symbol)
-        operation_symbol = input("Pick an operator from the line above: ")
-        new_num = float(input("What is the next number? "))
-        calculation = operations[operation_symbol](calculation, new_num)
+    num2 = float(input("What's the second number? "))
+    
+    calculation = operations[operation_symbol](num1, num2)
+    print(f"{num1} {operation_symbol} {num2} = {calculation}")  
+       
+    keep_counting = True
+    
+    while keep_counting:
+        continue_calculating = continue_calculations()
+        if continue_calculating[0] == "n":
+            keep_counting = False # working
+        elif continue_calculating[0] == "y":
+            for symbol in operations: # not working
+                print(symbol)
+            operation_symbol = input("Pick an operator from the line above: ")
+            new_num = float(input("What is the next number? "))
+            new_calculation = operations[operation_symbol](calculation, new_num)
+            print(f"{calculation} {operation_symbol} {new_num} = {new_calculation}")
+            continue
 
-# TODO Create a while loop to continue asking user whether they want to continue operations
+    my_calculation = False
